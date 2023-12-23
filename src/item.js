@@ -1,6 +1,6 @@
-import edit_icon from "../src/icons/8666681_edit_icon.svg";
-import trash_icon from "../src/icons/9004673_trash_delete_bin_remove_icon.svg";
-import exit_icon from "../src/icons/1303876_cancel_circle_close_cross_delete_icon.png";
+import edit_icon from "./icons/8666681_edit_icon.svg";
+import trash_icon from "./icons/9004673_trash_delete_bin_remove_icon.svg";
+import exit_icon from "./icons/1303876_cancel_circle_close_cross_delete_icon.png";
 
 
 export function createItem(id, title, details, user_priority, finish_date, is_completed) {

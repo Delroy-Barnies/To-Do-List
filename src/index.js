@@ -2,7 +2,7 @@ import "./styles.css";
 import { createItem } from "./item";
 import { control_images } from "./control_images";
 import { addTaskButton } from "./task_button";
-import delete_project_img from "../src/icons/9040415_folder_x_icon.svg"
+import delete_project_img from "./icons/9040415_folder_x_icon.svg"
 
 
 const dialog = document.getElementById("dialog");

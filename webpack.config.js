@@ -31,7 +31,7 @@ module.exports = {
                 use: ['xml-loader'],
             }, 
             {
-                test: /\.(jpg|png|svg|gif)$/,
+                test: /\.(jpg|png|svg|gif)$/i,
                 type: 'asset/resource',
             },
         ],

@@ -2,7 +2,7 @@ import "./styles.css";
 import { createItem } from "./item";
 import { control_images } from "./control_images";
 import { addTaskButton } from "./task_button";
-import delete_project_img from "./icons/9040415_folder_x_icon.svg"
+import delete_project_img from "../src/icons/9040415_folder_x_icon.svg"
 
 
 const dialog = document.getElementById("dialog");
@@ -61,6 +61,7 @@ const projects = (function () {
             delete_project.onclick = function () {
                 content.removeChild(content_container);
                 custom_projects.removeChild(project);
+                projects.stored_projects = stored_projects.filter(e => e !== project.id);
             }
 
         }
@@ -132,7 +133,7 @@ function loadAllCustomProjects() {
     let stored_projects = localStorage.getItem('projects');
     stored_projects = stored_projects.split(",");
 
-    if (stored_projects.length == 1) {
+    if (stored_projects.length == 1 && stored_projects[0] == "") {
         stored_projects.shift();
     }
 
@@ -157,7 +158,7 @@ function storeAllCustomProjects() {
     localStorage.setItem('projects', projects.stored_projects);
 
     while (projects.custom_projects.firstChild) {
-        projects.custom_projects.removeChild(parent.firstChild);
+        projects.custom_projects.removeChild(projects.custom_projects.firstChild);
     }
 }
 
@@ -193,6 +194,7 @@ function loadAllUserData() {
                                 project_content.appendChild(default_list);
                             }
                         });
+
                     }
                     project_content.lastChild.appendChild(addTaskButton());
                 }
@@ -206,7 +208,6 @@ function loadAllUserData() {
 window.onbeforeunload = function () {
     storeAllCustomProjects();
 };
-
 
 window.onload = function () {
     loadAllCustomProjects();
@@ -256,6 +257,7 @@ function handleProject(project) {
 
                     button.onclick = function () {
 
+                        console.log('button clicked!');
                         dialog.style.removeProperty('display');
                         number_of_tasks = 0;
 
@@ -320,11 +322,9 @@ function handleProject(project) {
                             project_content.appendChild(default_list);
                         }
                     });
-
                 }
                 currant_project_container.lastChild.appendChild(addTaskButton());
             }
-
         });
     }
 }
@@ -340,6 +340,9 @@ document.querySelector('.exit-btn').addEventListener('click', function (event) {
 document.getElementById('edit-exit-btn').addEventListener('click', function (event) {
     edit_dialog.style.display = 'none';
 });
+
+
+// localStorage.clear();
 
 
 

@@ -97,6 +97,19 @@ export function createItem(id, title, details, user_priority, finish_date, is_co
     trash.addEventListener("click", function () {
         let list = item.parentElement;
         list.removeChild(item);
+
+        // edit task in storage
+        localStorage.removeItem('projects');
+        let storage_values = Object.values(localStorage);
+        let projects = localStorage.getItem('projects');
+        localStorage.setItem('projects', projects);
+
+        storage_values.forEach(task_string => {
+            const task = JSON.parse(task_string);
+            if (task.id == id) {
+                localStorage.removeItem(id);
+            }
+        });
     });
 
 

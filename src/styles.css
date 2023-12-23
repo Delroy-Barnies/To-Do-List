@@ -128,7 +128,7 @@ body {
 
 #project-form div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -207,15 +207,18 @@ body {
     font-size: 2rem;
     cursor: pointer;
     transition: ease-in-out 0.15s;
-}
 
-.custom-projects li:hover {
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: white;
+    border-bottom-color: transparent;
 
     border-top-width: 1px;
     border-top-style: solid;
+    border-top-color: transparent;
+}
+
+.custom-projects li:hover {
+    border-bottom-color: white;
     border-top-color: white;
 }
 
@@ -277,12 +280,32 @@ body {
 .content-container {
     width: 85%;
 
-    display: grid;
+    display: none;
     grid-template-rows: 200px 1fr;
     grid-template-columns: 1fr;
 
     justify-content: start;
 
+}
+
+.default-list-head {
+    display: flex;
+    width: 100%;
+    height: 67px;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.default-list-head img{
+    width: 50px;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+}
+
+.visible{
+    display: flex;
+    align-items: center;
 }
 
 #content h1 {
@@ -412,21 +435,24 @@ body {
 
 .details-section-header {
     display: grid;
-    grid-template-columns: 1fr 60px;
+    grid-template-columns: 540px 60px;
     width: 100%;
     height: 30%;
     align-items: center;
     justify-content: space-between;
 }
 
-.details-section div div{
+.details-section div div {
     width: 35px;
     height: 35px;
     cursor: pointer;
 }
 
-.details-section-exit img{
+.details-section-exit img {
     width: 35px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
 }
 
 .details-section-header h2 {
@@ -439,6 +465,8 @@ body {
     height: 60%;
     margin-left: 20px;
     text-align: left;
+    word-wrap: break-word;
+    width: 55%;
 }
 
 .edit-icon,
@@ -487,7 +515,8 @@ body {
     filter: none;
 }
 
-.dialog {
+.dialog,
+.edit-dialog {
     border-width: 0;
     background-color: white;
     filter: drop-shadow(6px 10px 10px rgb(0, 0, 0));
@@ -502,7 +531,12 @@ body {
     left: 0;
 }
 
-.dialog form {
+.edit-dialog {
+    display: none;
+}
+
+.dialog form,
+.edit-dialog form {
     display: flex;
     align-items: center;
 
@@ -510,7 +544,8 @@ body {
     height: 100%;
 }
 
-.dialog form .left-side {
+.dialog form .left-side,
+.edit-dialog .left-side {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -519,7 +554,8 @@ body {
     height: 100%;
 }
 
-.dialog form input {
+.dialog form input,
+.edit-dialog form input {
     border-radius: 20px;
     border-width: 0;
     padding: 15px;
@@ -561,7 +597,8 @@ body {
     margin-bottom: 10px;
 }
 
-.dialog form .right-side {
+.dialog form .right-side,
+.edit-dialog .right-side {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -586,6 +623,21 @@ body {
 
 }
 
+#low:checked+span,
+#edit-low:checked+span {
+    background-color: blue;
+}
+
+#medium:checked+span,
+#edit-medium:checked+span {
+    background-color: rgb(240, 240, 3);
+}
+
+#high:checked+span,
+#edit-high:checked+span {
+    background-color: red;
+}
+
 .radio-buttons label {
     position: relative;
 }
@@ -598,7 +650,7 @@ body {
     top: 1px;
     left: 6px;
     display: block;
-    background-color: blue;
+    /*background-color: rgb(70, 70, 70);*/
     cursor: pointer;
 }
 

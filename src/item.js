@@ -112,21 +112,22 @@ export function createItem(id, title, details, user_priority, finish_date, is_co
         });
     });
 
-
     // edit task
     edit.onclick = function () {
 
         const edit_dialog = document.getElementById('edit-dialog');
         edit_dialog.style.display = "flex";
-
         document.getElementById('edit-title').value = title;
         document.getElementById('edit-details').value = details;
         document.getElementById('edit-date').value = finish_date;
 
         // get info from dialog
-        document.getElementById('edit-form').addEventListener("submit", function (event) {
+        document.getElementById('edit-form').addEventListener("submit", handleEditFormSubmission);
+
+        function handleEditFormSubmission(event) {
 
             event.preventDefault();
+
             const form = document.getElementById('edit-form');
             let formData = new FormData(form);
 
@@ -182,7 +183,8 @@ export function createItem(id, title, details, user_priority, finish_date, is_co
                 }
             });
 
-        });
+            document.getElementById('edit-form').removeEventListener("submit", handleEditFormSubmission);
+        }
 
     }
 

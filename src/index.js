@@ -343,6 +343,7 @@ document.getElementById('edit-exit-btn').addEventListener('click', function (eve
 
 
 // localStorage.clear();
+console.log(localStorage);
 
 
 

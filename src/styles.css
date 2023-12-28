@@ -25,7 +25,7 @@ body {
 
 #sidebar {
     height: 100vh;
-    width: max(20vw, 250px);
+    width: max(20vw, 308px);
 
     position: fixed;
     display: flex;

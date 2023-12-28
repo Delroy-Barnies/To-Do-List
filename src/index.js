@@ -61,7 +61,7 @@ const projects = (function () {
             delete_project.onclick = function () {
                 content.removeChild(content_container);
                 custom_projects.removeChild(project);
-                projects.stored_projects = stored_projects.filter(e => e !== project.id);
+                projects.stored_projects = projects.stored_projects.filter(e => e !== project.id);
             }
 
         }
@@ -274,7 +274,7 @@ function handleProject(project) {
                     number_of_tasks = 0;
                     return;
                 }
-                
+
                 number_of_tasks++;
 
                 event.preventDefault();
@@ -339,7 +339,6 @@ document.querySelector('.exit-btn').addEventListener('click', function (event) {
 document.getElementById('edit-exit-btn').addEventListener('click', function (event) {
     edit_dialog.style.display = 'none';
 });
-
 
 
 

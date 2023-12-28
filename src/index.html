@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                     <form id="project-form" method="get" action="#">
-                        <input class="project-title" placeholder="Title" maxlength="15">
+                        <input onkeydown="return /[a-z]/i.test(event.key)" class="project-title" placeholder="Title" maxlength="15">
                         <div>
                             <button type="submit" class="save-project-btn">Save</button>
                             <button class="cancel-project-btn">Cancel</button>

@@ -107,7 +107,9 @@ export function createItem(id, title, details, user_priority, finish_date, is_co
         storage_values.forEach(task_string => {
             const task = JSON.parse(task_string);
             if (task.id == id) {
-                localStorage.removeItem(id);
+                console.log(task.id);
+                localStorage.removeItem(task.id);
+                console.log(localStorage);
             }
         });
     });

@@ -256,8 +256,6 @@ function handleProject(project) {
                 document.querySelectorAll('.add-task-button').forEach(button => {
 
                     button.onclick = function () {
-
-                        console.log('button clicked!');
                         dialog.style.removeProperty('display');
                         number_of_tasks = 0;
 
@@ -276,8 +274,7 @@ function handleProject(project) {
                     number_of_tasks = 0;
                     return;
                 }
-
-                console.log(number_of_tasks);
+                
                 number_of_tasks++;
 
                 event.preventDefault();
@@ -295,15 +292,17 @@ function handleProject(project) {
                     }
                 }
 
-                let storage_id = Object.keys(localStorage).length++;
+                let storage_length = Object.keys(localStorage).length;
 
-                const task = new Task(storage_id, formData.get('title'), formData.get('details'), priority_level, formData.get('date'), project.id, false);
+                storage_length++;
+
+                const task = new Task(storage_length, formData.get('title'), formData.get('details'), priority_level, formData.get('date'), project.id, false);
                 const new_task_item = createItem(task.id, task.title, task.details, task.priority, task.date, task.is_completed);
                 console.log(new_task_item);
                 currant_project_container.lastChild.appendChild(new_task_item[0]);
                 currant_project_container.lastChild.appendChild(new_task_item[1]);
 
-                localStorage.setItem(storage_id, JSON.stringify(task));
+                localStorage.setItem(storage_length, JSON.stringify(task));
 
                 // edit task in storage
                 localStorage.removeItem('projects');
@@ -340,10 +339,6 @@ document.querySelector('.exit-btn').addEventListener('click', function (event) {
 document.getElementById('edit-exit-btn').addEventListener('click', function (event) {
     edit_dialog.style.display = 'none';
 });
-
-
-// localStorage.clear();
-console.log(localStorage);
 
 
 
